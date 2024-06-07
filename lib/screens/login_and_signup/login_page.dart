@@ -98,9 +98,9 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text("NUTFLIX"),
+        title: const Text("Contact Us"),
         titleTextStyle: const TextStyle(
-            color: Colors.red, fontSize: 22, fontWeight: FontWeight.bold),
+            color: Color.fromARGB(255, 10, 40, 211), fontSize: 22, fontWeight: FontWeight.bold),
         backgroundColor: Colors.white.withOpacity(0),
       ),
       body: Center(
@@ -129,9 +129,9 @@ class _LoginPageState extends State<LoginPage> {
               ElevatedButton(
                 onPressed: _isSigningIn ? null : _signIn,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
+                  backgroundColor: const Color.fromARGB(255, 10, 40, 211),
                   foregroundColor: Colors.white,
-                  minimumSize: Size(double.infinity, 50),
+                  minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -152,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     child: const Text(
                       "Sign Up",
-                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+                      style: TextStyle(fontWeight: FontWeight.bold, color: Color.fromARGB(255, 10, 40, 211)),
                     ),
                   ),
                 ],

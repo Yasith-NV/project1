@@ -28,7 +28,7 @@ class FormContainerWidget extends StatefulWidget {
       this.inputType});
 
   @override
-  _FormContainerWidgetState createState() => new _FormContainerWidgetState();
+  _FormContainerWidgetState createState() => _FormContainerWidgetState();
 }
 
 class _FormContainerWidgetState extends State<FormContainerWidget> {
@@ -43,8 +43,8 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
         color: Colors.grey.withOpacity(.35),
         borderRadius: BorderRadius.circular(10),
       ),
-      child: new TextFormField(
-        style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255)),
+      child: TextFormField(
+        style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
         controller: widget.controller,
         keyboardType: widget.inputType,
         key: widget.fieldKey,
@@ -53,13 +53,13 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
         onSaved: widget.onSaved,
         validator: widget.validator,
         onFieldSubmitted: widget.onFieldSubmitted,
-        decoration: new InputDecoration(
+        decoration: InputDecoration(
           border: InputBorder.none,
           filled: true,
           hintText: widget.hintText,
-          hintStyle: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+          hintStyle: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
           // Toggle visibility icon based on isPasswordField flag
-          suffixIcon: new GestureDetector(
+          suffixIcon: GestureDetector(
             onTap: () {
               setState(() {
                 _obscureText = !_obscureText;
@@ -69,10 +69,10 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
                 ? Icon(
                     _obscureText ? Icons.visibility_off : Icons.visibility,
                     color: _obscureText == false
-                        ? Color.fromARGB(255, 250, 3, 3)
+                        ? Color.fromARGB(255, 10, 40, 211)
                         : Colors.grey,
                   )
-                : Text(""),
+                : const Text(""),
           ),
         ),
       ),

@@ -1,12 +1,12 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:project1/screens/main_screen.dart';
-import '../screens/login_and_signup/login_page.dart';
-import '../screens/login_and_signup/sign_up_page.dart';
-import '../screens/contact_form.dart';
-import '../screens/ticket_info/tickets_list.dart';
-import '../screens/ticket_info/ticket_details.dart';
+// import 'package:auto_route/auto_route.dart';
+// import '../screens/main_screen.dart';
+// import '../screens/login_and_signup/login_page.dart';
+// import '../screens/login_and_signup/sign_up_page.dart';
+// import '../screens/contact_form.dart';
+// import '../screens/ticket_info/tickets_list.dart';
+// import '../screens/ticket_info/ticket_details.dart';
 
-// @MaterialAutorouter( 
+// @AutoRouter(
 //   replaceInRouteName: 'Page,Route',
 //   routes: <AutoRoute>[
 //     AutoRoute(page: LoginPage, path: '/login', initial: true),
@@ -19,6 +19,7 @@ import '../screens/ticket_info/ticket_details.dart';
 // class $AppRouter {}
 
 
+
 // part 'app_router.gr.dart';
 
 // @AutoRouterConfig()
@@ -29,6 +30,6 @@ import '../screens/ticket_info/ticket_details.dart';
 //     /// routes go here
 //     AutoRoute(page: LoginPage),
 //     AutoRoute(page: SignUpPage),
-//     AutoRoute(page: page),
+//     
 //   ];
 // }
