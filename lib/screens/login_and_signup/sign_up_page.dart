@@ -59,9 +59,9 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text("NUTFLIX"),
+        title: const Text("Contact Us"),
         titleTextStyle: const TextStyle(
-          color: Colors.red,
+          color: Color.fromARGB(255, 10, 40, 211),
           fontWeight: FontWeight.bold,
           fontSize: 22,
         ),
@@ -103,9 +103,9 @@ class _SignUpPageState extends State<SignUpPage> {
               ElevatedButton(
                 onPressed: _isSigningUp ? null : _signUp,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
+                  backgroundColor: const Color.fromARGB(255, 10, 40, 211),
                   foregroundColor: Colors.white,
-                  minimumSize: Size(double.infinity, 50),
+                  minimumSize: const Size(double.infinity, 50),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -134,7 +134,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       "Login",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.red,
+                        color: Color.fromARGB(255, 10, 40, 211),
                       ),
                     ),
                   ),
