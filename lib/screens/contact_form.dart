@@ -24,7 +24,6 @@ class _ContactFormState extends State<ContactForm> {
         email: emailController.text,
         contactNumber: contactController.text,
         message: messageController.text,
-     
       );
 
       try {
@@ -43,55 +42,60 @@ class _ContactFormState extends State<ContactForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            TextFormField(
-              controller: nameController,
-              decoration: const InputDecoration(labelText: 'Name'),
-              validator: (value) => value!.isEmpty ? 'Please enter a name' : null,
-            ),
-            TextFormField(
-              controller: emailController,
-              decoration: const InputDecoration(labelText: 'Email'),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter an email';
-                } else if (!EmailValidator.validate(value)) {
-                  return 'Enter a valid email address';
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Contact Form"),
+      ),
+      body: Form(
+        key: _formKey,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              TextFormField(
+                controller: nameController,
+                decoration: const InputDecoration(labelText: 'Name'),
+                validator: (value) => value!.isEmpty ? 'Please enter a name' : null,
+              ),
+              TextFormField(
+                controller: emailController,
+                decoration: const InputDecoration(labelText: 'Email'),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter an email';
+                  } else if (!EmailValidator.validate(value)) {
+                    return 'Enter a valid email address';
+                  }
+                  return null;
                 }
-                return null;
-              }
-            ),
-            TextFormField(
-              controller: contactController,
-              decoration: const InputDecoration(labelText: 'Contact Number'),  
-              validator: (value) => value == null || value.isEmpty ? 'Please enter a contact number' : null,
-            ),
-            TextFormField(
-              controller: messageController,
-              decoration: const InputDecoration(labelText: 'Message'), 
-              validator: (value) => value == null || value.isEmpty ? 'Please enter a message' : null,
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: submitForm,
-              child: const Text('Submit'),
-            ),
-            const SizedBox(height: 20), 
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => TicketsList()),
-                );
-              },
-              child: const Text('Ticket List')
-            )
-          ],
+              ),
+              TextFormField(
+                controller: contactController,
+                decoration: const InputDecoration(labelText: 'Contact Number'),  
+                validator: (value) => value == null || value.isEmpty ? 'Please enter a contact number' : null,
+              ),
+              TextFormField(
+                controller: messageController,
+                decoration: const InputDecoration(labelText: 'Message'), 
+                validator: (value) => value == null || value.isEmpty ? 'Please enter a message' : null,
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: submitForm,
+                child: const Text('Submit'),
+              ),
+              const SizedBox(height: 20), 
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => TicketsList()),
+                  );
+                },
+                child: const Text('Ticket List')
+              )
+            ],
+          ),
         ),
       ),
     );

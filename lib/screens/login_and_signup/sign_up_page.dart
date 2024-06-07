@@ -43,7 +43,7 @@ class _SignUpPageState extends State<SignUpPage> {
     if (user != null) {
       // Show success message and navigate to home page if sign-up successful
       showToast(message: 'Sign-up successful');
-      Navigator.pushReplacementNamed(context, "/home");
+      Navigator.pushReplacementNamed(context, "/login");
     } else {
       // Show error message if sign-up failed
       showToast(message: 'Sign-up failed. Please try again.');
@@ -113,7 +113,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: _isSigningUp
                     ? const CircularProgressIndicator(color: Colors.white)
                     : const Text(
-                        "Sign Up to NUTFLIX",
+                        "Sign Up",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
               ),

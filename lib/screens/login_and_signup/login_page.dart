@@ -6,6 +6,7 @@ import 'sign_up_page.dart';
 import '../../services/firebase_auth_services.dart';
 import '../../global_utility_funtions/email_toast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../contact_form.dart';
 
 // Login Page Widget
 class LoginPage extends StatefulWidget {
@@ -25,13 +26,6 @@ class _LoginPageState extends State<LoginPage> {
 
   late StreamSubscription<ConnectivityResult> _connectivitySubscription;
 
-  @override
-  void initState() {
-    super.initState();
-    _connectivitySubscription =
-        Connectivity().onConnectivityChanged.listen(_updateConnectionStatus as void Function(List<ConnectivityResult> event)?) as StreamSubscription<ConnectivityResult>;
-    _checkLoginState();
-  }
 
   // Check if the user is already logged in
   Future<void> _checkLoginState() async {
@@ -39,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
     final loggedInState = prefs.getString('loggedInState');
 
     if (loggedInState == 'logged_in') {
-      Navigator.pushReplacementNamed(context, "/home");
+      Navigator.pushReplacementNamed(context, "/");
     }
   }
 
@@ -75,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
       await prefs.setString('loggedInState', 'logged_in');
 
       showToast(message: "User is successfully signed in");
-      Navigator.pushReplacementNamed(context, "/home");
+      Navigator.pushReplacementNamed(context, "/");
     } else {
       showToast(message: "Failed to sign in. Please check your credentials.");
     }
