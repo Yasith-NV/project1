@@ -6,7 +6,6 @@ import 'sign_up_page.dart';
 import '../../services/firebase_auth_services.dart';
 import '../../global_utility_funtions/email_toast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../contact_form.dart';
 
 // Login Page Widget
 class LoginPage extends StatefulWidget {
