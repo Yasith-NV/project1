@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "353247836212",
+    "firebase_url": "https://contact-fourm-98cf0-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "contact-fourm-98cf0",
+    "storage_bucket": "contact-fourm-98cf0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353247836212:android:dfd07c7256e69a67b53261",
+        "android_client_info": {
+          "package_name": "com.cf.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6K-gRbNIxr3BYkjqxXahSLFHzr7Xb5qY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
