@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:email_validator/email_validator.dart';
-import '../Model/ticket.dart';  
 import 'package:project1/screens/ticket_info/tickets_list.dart';
+import '../Model/ticket.dart';  
 import 'package:firebase_auth/firebase_auth.dart';
-
+import '../global_widgets/app_bar.dart';
 
 class ContactForm extends StatefulWidget {
   @override
@@ -25,90 +25,94 @@ class _ContactFormState extends State<ContactForm> {
   @override
   void initState() {
     super.initState();
-    _widgetOptions = [
+    checkLoginState();
+      _widgetOptions = [
       buildContactForm(),
       TicketsList(),
     ];
+    
+  }
+
+  void checkLoginState() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    if (auth.currentUser == null) {
+      Navigator.pushReplacementNamed(context, "/contact_form");
+    }
   }
 
   Widget buildContactForm() {
-
-    
     return Scaffold(
-    appBar: AppBar(
-      title: const Text("Contact Form"),
-    ),
-    drawer: Drawer(
+      appBar: const CustomAppBar(
+        titleText: 'Contact Form',
+      ),
+      drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(color: const Color.fromARGB(255, 30, 9, 223)),
-              child: Text('Menu',
-                  style: TextStyle(color: Colors.white, fontSize: 24)),
+            const DrawerHeader(
+              decoration: BoxDecoration(color: Color.fromARGB(255, 30, 9, 223)),
+              child: Text('Menu', style: TextStyle(color: Colors.white, fontSize: 24)),
             ),
-
             ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Sign out'),
-            onTap: () async {
-              try {
-                await FirebaseAuth.instance.signOut();
-                Navigator.of(context).pushNamedAndRemoveUntil('/login', (Route<dynamic> route) => false);
-              } catch (e) {
-                print("test");
-              } 
-            },
-          ),
-        ],
-      ),
-    ),
-    body:Form(
-      key: _formKey,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            TextFormField(
-              controller: nameController,
-              decoration: const InputDecoration(labelText: 'Name'),
-              validator: (value) => value!.isEmpty ? 'Please enter a name' : null,
+              leading: const Icon(Icons.logout),
+              title: const Text('Sign out'),
+              onTap: () async {
+                try {
+                  await FirebaseAuth.instance.signOut();
+                  Navigator.of(context).pushNamedAndRemoveUntil('/login', (Route<dynamic> route) => false);
+                } catch (e) {
+                  print("Error signing out: $e");
+                } 
+              },
             ),
-            TextFormField(
-              controller: emailController,
-              decoration: const InputDecoration(labelText: 'Email'),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter an email';
-                } else if (!EmailValidator.validate(value)) {
-                  return 'Enter a valid email address';
-                }
-                return null;
-              }
-            ),
-            TextFormField(
-              controller: contactController,
-              decoration: const InputDecoration(labelText: 'Contact Number'),  
-              validator: (value) => value == null || value.isEmpty ? 'Please enter a contact number' : null,
-            ),
-            TextFormField(
-              controller: messageController,
-              decoration: const InputDecoration(labelText: 'Message'), 
-              validator: (value) => value == null || value.isEmpty ? 'Please enter a message' : null,
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: submitForm,
-              child: const Text('Submit'),
-            ),
-            const SizedBox(height: 20), 
-
-            
           ],
         ),
       ),
-    ));
+      body: Form(
+        key: _formKey,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              TextFormField(
+                controller: nameController,
+                decoration: const InputDecoration(labelText: 'Name'),
+                validator: (value) => value!.isEmpty ? 'Please enter a name' : null,
+              ),
+              TextFormField(
+                controller: emailController,
+                decoration: const InputDecoration(labelText: 'Email'),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter an email';
+                  } else if (!EmailValidator.validate(value)) {
+                    return 'Enter a valid email address';
+                  }
+                  return null;
+                }
+              ),
+              TextFormField(
+                controller: contactController,
+                decoration: const InputDecoration(labelText: 'Contact Number'),  
+                validator: (value) => value == null || value.isEmpty ? 'Please enter a contact number' : null,
+              ),
+              TextFormField(
+                controller: messageController,
+                decoration: const InputDecoration(labelText: 'Message'), 
+                validator: (value) => value == null || value.isEmpty ? 'Please enter a message' : null,
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: submitForm,
+                child: const Text('Submit'),
+              ),
+              const SizedBox(height: 20), 
+            ],
+          ),
+        ),
+      )
+    );
   }
 
   void submitForm() async {
@@ -156,10 +160,6 @@ class _ContactFormState extends State<ContactForm> {
             icon: Icon(Icons.list),
             label: 'Tickets',
           ),
-          //   BottomNavigationBarItem(
-          //   icon: Icon(Icons.more),
-          //   label: 'More',
-          // ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: const Color.fromARGB(255, 30, 9, 223),

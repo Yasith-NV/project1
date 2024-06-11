@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 class SplashScreen extends StatefulWidget {
-  final Widget? child; // Child widget to navigate to after the splash screen
+  final Widget? child; 
   const SplashScreen({super.key, this.child});
 
   @override

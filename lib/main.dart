@@ -7,6 +7,7 @@ import 'screens/contact_form.dart';
 import 'screens/ticket_info/tickets_list.dart';
 import 'screens/ticket_info/ticket_details.dart';
 import 'global_widgets/app_theme.dart';
+import 'screens/spash_screen.dart';
 
 
 void main() async {
@@ -22,17 +23,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+   
     return MaterialApp(
+      
       title: 'Contact Form App',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
       initialRoute: '/login',  
+      home: const SplashScreen( 
+        child: LoginPage(), 
+      ),
       routes: {
-        '/login': (context) => const LoginPage(),                  
+        '/login': (context) => const LoginPage(),       
         '/signup': (context) => const SignUpPage(), 
-        '/': (context) => ContactForm(),              
-        '/tickets_list': (context) => TicketsList(),         
-        '/ticket_details': (context) => const TicketDetail(documentId: ''),     
+        '/contact_form': (context) => ContactForm(),
+        '/tickets_list': (context) => TicketsList(), 
+        '/ticket_details': (context) => const TicketDetail(documentId: ''),   
       },
     );
   }

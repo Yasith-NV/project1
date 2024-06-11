@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import '../login_and_signup/login_signup_widgets/form_container_widget.dart';
@@ -32,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
     final loggedInState = prefs.getString('loggedInState');
 
     if (loggedInState == 'logged_in') {
-      Navigator.pushReplacementNamed(context, "/");
+      Navigator.pushReplacementNamed(context, "/contact_form");
     }
   }
 
@@ -57,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
       _isSigningIn = true;
     });
 
-    var user = await _authServices.signInWithEmailAndPassword(
+    User? user = await _authServices.signInWithEmailAndPassword(
       _emailController.text.trim(),
       _passwordController.text.trim(),
     );
@@ -68,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
       await prefs.setString('loggedInState', 'logged_in');
 
       showToast(message: "User is successfully signed in");
-      Navigator.pushReplacementNamed(context, "/");
+      Navigator.pushReplacementNamed(context, "/contact_form");
     } else {
       showToast(message: "Failed to sign in. Please check your credentials.");
     }
