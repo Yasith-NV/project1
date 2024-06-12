@@ -62,7 +62,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text("Contact Us"),
+        title: const Text("Contact Pro"),
         titleTextStyle: const TextStyle(
           color: Color.fromARGB(255, 10, 40, 211),
           fontWeight: FontWeight.bold,

@@ -97,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text("Contact Us"),
+        title: const Text("Contact Pro"),
         titleTextStyle: const TextStyle(
             color: Color.fromARGB(255, 10, 40, 211), fontSize: 22, fontWeight: FontWeight.bold),
         backgroundColor: Colors.white.withOpacity(0),
