@@ -1,8 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../Model/ticket.dart'; 
 import 'package:email_validator/email_validator.dart';
+
+@RoutePage()
 
 class TicketDetail extends StatefulWidget {
   final String documentId;

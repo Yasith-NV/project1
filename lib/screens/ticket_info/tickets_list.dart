@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'ticket_details.dart';  
 
+@RoutePage()
 class TicketsList extends StatefulWidget {
   @override
   _TicketsListState createState() => _TicketsListState();
@@ -16,6 +18,7 @@ class _TicketsListState extends State<TicketsList> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Submitted Tickets'),
+        automaticallyImplyLeading: false,
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: _firestore.collection('contacts').snapshots(),

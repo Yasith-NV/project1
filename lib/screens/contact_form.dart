@@ -1,11 +1,16 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../routes/app_router.gr.dart';
 import 'package:email_validator/email_validator.dart';
-import 'package:project1/screens/ticket_info/tickets_list.dart';
+import '../screens/ticket_info/tickets_list.dart' as tickets_list;
 import '../Model/ticket.dart';  
 import 'package:firebase_auth/firebase_auth.dart';
 import '../global_widgets/app_bar.dart';
+
+
+@RoutePage()
 
 class ContactForm extends StatefulWidget {
   @override
@@ -27,8 +32,10 @@ class _ContactFormState extends State<ContactForm> {
     super.initState();
     checkLoginState();
       _widgetOptions = [
-      buildContactForm(),
-      TicketsList(),
+        
+        buildContactForm(),
+        tickets_list.TicketsList(),
+        
     ];
     
   }
@@ -36,7 +43,7 @@ class _ContactFormState extends State<ContactForm> {
   void checkLoginState() async {
     FirebaseAuth auth = FirebaseAuth.instance;
     if (auth.currentUser == null) {
-      Navigator.pushReplacementNamed(context, "/contact_form");
+      context.router.replace(const LoginRoute());
     }
   }
 
@@ -59,7 +66,7 @@ class _ContactFormState extends State<ContactForm> {
               onTap: () async {
                 try {
                   await FirebaseAuth.instance.signOut();
-                  Navigator.of(context).pushNamedAndRemoveUntil('/login', (Route<dynamic> route) => false);
+                  context.router.replace(const LoginRoute());
                 } catch (e) {
                   print("Error signing out: $e");
                 } 

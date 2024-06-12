@@ -1,8 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:project1/routes/app_router.gr.dart';
 import '../login_and_signup/login_signup_widgets/form_container_widget.dart';
-import 'login_page.dart';
 import '../../services/firebase_auth_services.dart';
 import '../../global_utility_funtions/email_toast.dart';
+
+@RoutePage()
 
 // Sign-up Page Widget
 class SignUpPage extends StatefulWidget {
@@ -43,7 +46,7 @@ class _SignUpPageState extends State<SignUpPage> {
     if (user != null) {
       // Show success message and navigate to home page if sign-up successful
       showToast(message: 'Sign-up successful');
-      Navigator.pushReplacementNamed(context, "/login");
+      AutoRouter.of(context).push(const LoginRoute());
     } else {
       // Show error message if sign-up failed
       showToast(message: 'Sign-up failed. Please try again.');
@@ -124,12 +127,11 @@ class _SignUpPageState extends State<SignUpPage> {
                 children: [
                   const Text("Already have an account? "),
                   GestureDetector(
-                    onTap: () => Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginPage()),
-                      (Route<dynamic> route) => false,
+                    
+                    onTap: () => (AutoRouter.of(context).push(const LoginRoute())
+                    
                     ),
+
                     child: const Text(
                       "Login",
                       style: TextStyle(

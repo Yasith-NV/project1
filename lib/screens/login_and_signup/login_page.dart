@@ -1,13 +1,17 @@
 import 'dart:async';
+import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:project1/routes/app_router.gr.dart';
+
 import '../login_and_signup/login_signup_widgets/form_container_widget.dart';
-import 'sign_up_page.dart';
+
 import '../../services/firebase_auth_services.dart';
 import '../../global_utility_funtions/email_toast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+@RoutePage()
 // Login Page Widget
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -33,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
     final loggedInState = prefs.getString('loggedInState');
 
     if (loggedInState == 'logged_in') {
-      Navigator.pushReplacementNamed(context, "/contact_form");
+      AutoRouterConfig;
     }
   }
 
@@ -69,7 +73,8 @@ class _LoginPageState extends State<LoginPage> {
       await prefs.setString('loggedInState', 'logged_in');
 
       showToast(message: "User is successfully signed in");
-      Navigator.pushReplacementNamed(context, "/contact_form");
+      AutoRouter.of(context).push(const ContactForm());
+
     } else {
       showToast(message: "Failed to sign in. Please check your credentials.");
     }
@@ -140,9 +145,9 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   const Text("Don't have an account? "),
                   GestureDetector(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const SignUpPage()),
+                    onTap: () =>(
+          
+                      AutoRouter.of(context).push(const SignUpRoute())
                     ),
                     child: const Text(
                       "Sign Up",
