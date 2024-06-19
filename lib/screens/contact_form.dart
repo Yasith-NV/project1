@@ -2,12 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../routes/app_router.gr.dart';
 import 'package:email_validator/email_validator.dart';
-import '../screens/ticket_info/tickets_list.dart' as tickets_list;
-import '../Model/ticket.dart';  
+import 'package:project1/global_widgets/app_bar.dart';
+import 'package:project1/model/ticket.dart';
+import 'package:project1/routes/app_router.gr.dart';
+import 'package:project1/screens/ticket_info/tickets_list.dart' as tickets_list;
 import 'package:firebase_auth/firebase_auth.dart';
-import '../global_widgets/app_bar.dart';
 
 
 @RoutePage()

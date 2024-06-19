@@ -37,5 +37,5 @@ flutter_gen:
 
 flutter:
   assets:
-    - assets/images/contact-mail.png  
+    - assets/images/
   uses-material-design: true

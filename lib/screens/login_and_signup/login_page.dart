@@ -3,13 +3,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:project1/global_utility_funtions/email_toast.dart';
 import 'package:project1/routes/app_router.gr.dart';
-
-import '../login_and_signup/login_signup_widgets/form_container_widget.dart';
-
-import '../../services/firebase_auth_services.dart';
-import '../../global_utility_funtions/email_toast.dart';
+import 'package:project1/screens/login_and_signup/login_signup_widgets/form_container_widget.dart';
+import 'package:project1/services/firebase_auth_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 
 @RoutePage()
 // Login Page Widget
