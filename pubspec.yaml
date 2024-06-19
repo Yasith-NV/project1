@@ -33,9 +33,12 @@ dev_dependencies:
 flutter_gen:
   output: lib/gen/  
   integrations:
-    flutter_svg: true 
-
-flutter:
+    flutter_svg: true
   assets:
     - assets/images/
+
+flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
+
